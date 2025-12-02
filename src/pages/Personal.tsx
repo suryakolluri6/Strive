@@ -6,7 +6,9 @@ export default function Personal(){
   const [status, setStatus] = useState<string | null>(null)
 
   useEffect(()=>{
-    getHealth().then(d=> setStatus(d.status)).catch(()=>setStatus('unreachable'))
+    getHealth()
+      .then((d: {status: string}) => setStatus(d.status))
+      .catch(()=>setStatus('unreachable'))
   },[])
 
   return (
