@@ -1,34 +1,9 @@
-import { useEffect, useState } from 'react'
 import BodyDiagram from '../components/BodyDiagram'
-import { getHealth } from '../services/api'
 
 export default function Personal() {
-  const [status, setStatus] = useState<string | null>(null)
-
-  useEffect(() => {
-    getHealth()
-      .then((d: { status: string }) => setStatus(d.status))
-      .catch(() => setStatus('unreachable'))
-  }, [])
-
   return (
     <section>
       <h1>My Stats</h1>
-
-      <div style={{
-        padding: '1rem',
-        backgroundColor: 'var(--secondary-bg)',
-        borderRadius: '6px',
-        marginBottom: '2rem',
-        border: '1px solid var(--border-color)'
-      }}>
-        <strong>API Status: </strong>
-        <span style={{
-          color: status === 'ok' ? '#22c55e' : status === 'unreachable' ? '#ef4444' : '#f59e0b'
-        }}>
-          {status === 'ok' ? '✓ Connected' : status === 'unreachable' ? '✗ Disconnected' : 'Loading...'}
-        </span>
-      </div>
 
       <div className="grid-2">
         <div className="card">
