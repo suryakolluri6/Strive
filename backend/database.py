@@ -13,6 +13,8 @@ async def connect_to_mongo():
     # Verify connection
     await client.admin.command('ping')
     print(f"✓ Connected to MongoDB: {settings.DATABASE_NAME}")
+    print("MongoDB URI being used:", settings.MONGODB_URL)
+    
 
 
 async def close_mongo_connection():
