@@ -1,19 +1,46 @@
-import BodyDiagram from '../components/BodyDiagram'
+import { useState, useEffect } from 'react'
+import BodyGraph from '../components/BodyGraph'
+import type { BodyGraphData } from '../types/body'
 
 export default function Personal() {
+  const [bodyData, setBodyData] = useState<BodyGraphData>({})
+
+  useEffect(() => {
+    // Load persisted data from localStorage
+    const savedData: BodyGraphData = {}
+    const bodyParts: (keyof BodyGraphData)[] = ['Chest', 'Back', 'Legs', 'Shoulders', 'Biceps', 'Triceps', 'Core']
+    bodyParts.forEach((part) => {
+      const saved = localStorage.getItem(`bodygraph_${part as string}`)
+      if (saved) {
+        savedData[part] = JSON.parse(saved)
+      }
+    })
+    setBodyData(savedData)
+  }, [])
+
+  const handleBodyGraphUpdate = (updated: BodyGraphData) => {
+    setBodyData(updated)
+  }
+
   return (
     <section>
       <h1>My Stats</h1>
 
-      <div className="grid-2">
+      <div style={{ marginBottom: '2rem' }}>
         <div className="card">
           <h2>Body Levels</h2>
           <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>
             Your strength distribution across different muscle groups
           </p>
-          <BodyDiagram />
+          <BodyGraph 
+            data={bodyData} 
+            imageUrl="/strive-drawing.jpg"
+            onUpdate={handleBodyGraphUpdate}
+          />
         </div>
+      </div>
 
+      <div className="grid-2">
         <div className="card">
           <h2>Totals</h2>
           <ul style={{ listStyle: 'none', marginLeft: 0 }}>
