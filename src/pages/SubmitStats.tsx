@@ -265,7 +265,7 @@ export default function SubmitStats() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="weight">Weight (kg)</label>
+              <label htmlFor="weight">Weight (lb)</label>
               <input
                 id="weight"
                 type="number"
@@ -297,8 +297,8 @@ export default function SubmitStats() {
                     <th style={{ textAlign: 'left', padding: '0.8rem', fontWeight: 600 }}>Exercise</th>
                     <th style={{ textAlign: 'center', padding: '0.8rem', fontWeight: 600 }}>Sets</th>
                     <th style={{ textAlign: 'center', padding: '0.8rem', fontWeight: 600 }}>Reps</th>
-                    <th style={{ textAlign: 'center', padding: '0.8rem', fontWeight: 600 }}>Weight (kg)</th>
-                    <th style={{ textAlign: 'center', padding: '0.8rem', fontWeight: 600 }}>Total (kg)</th>
+                    <th style={{ textAlign: 'center', padding: '0.8rem', fontWeight: 600 }}>Weight (lb)</th>
+                    <th style={{ textAlign: 'center', padding: '0.8rem', fontWeight: 600 }}>Total (lb)</th>
                     <th style={{ textAlign: 'center', padding: '0.8rem', fontWeight: 600 }}>Action</th>
                   </tr>
                 </thead>
@@ -354,7 +354,7 @@ export default function SubmitStats() {
                 }}>
                   <p style={{ margin: '0 0 0.5rem 0', color: 'var(--text-secondary)' }}>{bp.bodyPart}</p>
                   <p style={{ margin: 0, fontSize: '1.5rem', fontWeight: 700, color: 'var(--accent-red)' }}>
-                    {bp.weight} kg
+                    {bp.weight} lb
                   </p>
                 </div>
               ))}
@@ -370,7 +370,7 @@ export default function SubmitStats() {
               <div style={{ textAlign: 'center' }}>
                 <p style={{ margin: '0 0 0.5rem 0', color: 'var(--text-secondary)' }}>Total Weight Lifted</p>
                 <p style={{ margin: 0, fontSize: '2rem', fontWeight: 700, color: 'var(--accent-red)' }}>
-                  {totalWeight} kg
+                  {totalWeight} lbs
                 </p>
               </div>
               <div style={{ textAlign: 'center' }}>

@@ -25,11 +25,11 @@ export default function Personal() {
             </li>
             <li style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', padding: '0.8rem 0', borderBottom: '1px solid var(--border-color)' }}>
               <span>Total Weight Lifted</span>
-              <strong style={{ color: 'var(--accent-red)' }}>45,000 kg</strong>
+              <strong style={{ color: 'var(--accent-red)' }}>45,000 lbs</strong>
             </li>
             <li style={{ display: 'flex', justifyContent: 'space-between', padding: '0.8rem 0' }}>
               <span>Personal Best (Bench)</span>
-              <strong style={{ color: 'var(--accent-red)' }}>150 kg</strong>
+              <strong style={{ color: 'var(--accent-red)' }}>150 lbs</strong>
             </li>
           </ul>
         </div>

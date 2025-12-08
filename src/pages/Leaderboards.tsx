@@ -1,8 +1,12 @@
 import { useState } from 'react'
 
 export default function Leaderboards() {
-  const [tab, setTab] = useState<'overview' | 'max'>('overview')
+  const [tab, setTab] = useState<'overview' | 'max' | 'levels'>('overview')
 
+  //NOTE TO NEXT PERSON
+  //WE CAN REPLACE NAMES WITH IDS FROM MONGO
+  //WE CAN ALSO FETCH ALL THE DATA FROM THE EXERCISE ARRAY IN MONGO
+  //WE CAN ALSO ASSIGN A VALUE TO LEVELS TO GET DATA HERE
   const overview = [
     {
       title: 'Time in Gym',
@@ -15,9 +19,9 @@ export default function Leaderboards() {
     {
       title: 'Total Weight Lifted',
       data: [
-        { rank: 1, name: 'Bob', value: '50,000 kg' },
-        { rank: 2, name: 'Charlie', value: '48,000 kg' },
-        { rank: 3, name: 'Alice', value: '45,000 kg' },
+        { rank: 1, name: 'Bob', value: '50,000 lbs' },
+        { rank: 2, name: 'Charlie', value: '48,000 lbs' },
+        { rank: 3, name: 'Alice', value: '45,000 lbs' },
       ]
     }
   ]
@@ -26,30 +30,89 @@ export default function Leaderboards() {
     {
       title: 'Bench Press (Max)',
       data: [
-        { rank: 1, name: 'Bob', value: '200 kg' },
-        { rank: 2, name: 'Alice', value: '160 kg' },
-        { rank: 3, name: 'Charlie', value: '150 kg' },
+        { rank: 1, name: 'Bob', value: '200' },
+        { rank: 2, name: 'Alice', value: '180' },
+        { rank: 3, name: 'Charlie', value: '160' },
       ]
     },
     {
       title: 'Squat (Max)',
       data: [
-        { rank: 1, name: 'Charlie', value: '260 kg' },
-        { rank: 2, name: 'Bob', value: '240 kg' },
-        { rank: 3, name: 'Alice', value: '220 kg' },
+        { rank: 1, name: 'Charlie', value: '200' },
+        { rank: 2, name: 'Bob', value: '180' },
+        { rank: 3, name: 'Alice', value: '160' },
       ]
     },
     {
       title: 'Deadlift (Max)',
       data: [
-        { rank: 1, name: 'Charlie', value: '250 kg' },
-        { rank: 2, name: 'Bob', value: '240 kg' },
-        { rank: 3, name: 'Alice', value: '200 kg' },
+        { rank: 1, name: 'Charlie', value: '200' },
+        { rank: 2, name: 'Bob', value: '180' },
+        { rank: 3, name: 'Alice', value: '160' },
       ]
     }
   ]
 
-  const active = tab === 'overview' ? overview : maxLifts
+  const levels = [
+    {
+      title: 'Chest',
+      data: [
+        { rank: 1, name: 'Alice', value: 'Platinum' },
+        { rank: 2, name: 'Bob', value: 'Gold' },
+        { rank: 3, name: 'Charlie', value: 'Silver' },
+      ]
+    },
+    {
+      title: 'Back',
+      data: [
+        { rank: 1, name: 'Bob', value: 'Diamond' },
+        { rank: 2, name: 'Alice', value: 'Gold' },
+        { rank: 3, name: 'Charlie', value: 'Silver' },
+      ]
+    },
+    {
+      title: 'Shoulders',
+      data: [
+        { rank: 1, name: 'Alice', value: 'Gold' },
+        { rank: 2, name: 'Bob', value: 'Silver' },
+        { rank: 3, name: 'Charlie', value: 'Bronze' },
+      ]
+    },
+    {
+      title: 'Legs',
+      data: [
+        { rank: 1, name: 'Alice', value: 'Platinum' },
+        { rank: 2, name: 'Bob', value: 'Gold' },
+        { rank: 3, name: 'Charlie', value: 'Silver' },
+      ]
+    },
+    {
+      title: 'Biceps',
+      data: [
+        { rank: 1, name: 'Charlie', value: 'Platinum' },
+        { rank: 2, name: 'Bob', value: 'Gold' },
+        { rank: 3, name: 'Alice', value: 'Silver' },
+      ]
+    },
+    {
+      title: 'Tricep',
+      data: [
+      { rank: 1, name: 'Bob', value: 'Diamond' },
+        { rank: 2, name: 'Alice', value: 'Silver' },
+        { rank: 3, name: 'Charlie', value: 'Bronze' },
+      ]
+    },
+    {
+      title: 'Core',
+      data: [
+        { rank: 1, name: 'Alice', value: 'Platinum' },
+        { rank: 2, name: 'Bob', value: 'Gold' },
+        { rank: 3, name: 'Charlie', value: 'Silver' },
+      ]
+    },
+  ]
+
+  const active = tab === 'overview' ? overview : tab === 'max' ? maxLifts : levels
 
   return (
     <section>
@@ -88,6 +151,21 @@ export default function Leaderboards() {
           }}
         >
           Max Lifts
+        </button>
+        <button
+          type="button"
+          onClick={() => setTab('levels')}
+          style={{
+            padding: '0.6rem 1rem',
+            borderRadius: 6,
+            border: tab === 'levels' ? '2px solid var(--accent-red)' : '1px solid var(--border-color)',
+            background: tab === 'levels' ? 'var(--accent-red)' : 'var(--secondary-bg)',
+            color: tab === 'levels' ? '#fff' : 'var(--text-secondary)',
+            fontWeight: 700,
+            cursor: 'pointer'
+          }}
+        >
+          Levels
         </button>
       </div>
 

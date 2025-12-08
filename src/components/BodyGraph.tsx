@@ -10,6 +10,7 @@ interface BodyGraphProps {
 // Label positions based on where the lines point in the diagram (front and back)
 // Adjusted to match the actual label line endpoints on the body diagram
 const LABEL_POSITIONS: Record<BodyPartName, { x: number; y: number }> = {
+    //HAND ADJUSTED TO MATCH DO NOT TOUCH
   Shoulders: { x: 11, y: 14 },    // Top left corner
   Chest: { x: 45, y: 14 },        // Top center area
   Back: { x: 83, y: 11 },         // Top right corner (back view)
@@ -92,7 +93,7 @@ export default function BodyGraph({ imageUrl }: BodyGraphProps) {
                   minWidth: '55px',
                   whiteSpace: 'nowrap'
                 }}
-                title={`${part}: ${weight.toLocaleString()} kg`}
+                title={`${part}: ${weight.toLocaleString()} lbs`}
               >
                 {level}
               </div>
@@ -147,7 +148,7 @@ export default function BodyGraph({ imageUrl }: BodyGraphProps) {
                   color: 'var(--text-secondary)'
                 }}
               >
-                {weight.toLocaleString()} kg
+                {weight.toLocaleString()} lbs
               </div>
             </div>
           )
@@ -168,7 +169,7 @@ export default function BodyGraph({ imageUrl }: BodyGraphProps) {
       >
         <h3 style={{ marginBottom: '1rem' }}>Total Weight Lifted (All Time)</h3>
         <div style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--accent-red)' }}>
-          {Object.values(stats).reduce((sum, w) => sum + (w ?? 0), 0).toLocaleString()} kg
+          {Object.values(stats).reduce((sum, w) => sum + (w ?? 0), 0).toLocaleString()} lbs
         </div>
       </div>
     </div>
