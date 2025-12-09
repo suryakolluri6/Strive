@@ -28,10 +28,10 @@ export default function Navbar() {
                 to="#"
                 className="nav-link-button"
                 onClick={(e) => {
-                  e.preventDefault()         // prevent default link behavior
+                  e.preventDefault()         
                   localStorage.removeItem("currentUser")
                   setUser(null)
-                  navigate("/")               // programmatically navigate
+                  navigate("/")               
                 }}
               >
                 Logout
